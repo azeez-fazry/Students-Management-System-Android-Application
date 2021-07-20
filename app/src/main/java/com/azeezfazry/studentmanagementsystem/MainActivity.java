@@ -21,10 +21,11 @@ public class MainActivity extends AppCompatActivity {
         EditText editTextPassword = findViewById(R.id.etPassword);
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();
-        if (isValidLogin(username,password)) {
+        if (isValidLogin(username, password)) {
             Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
             startActivity(intent);
         }
+
     }
 
     /**
@@ -34,15 +35,10 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private boolean isValidLogin(String username, String password) {
-        if(username == "admin") {
-            if(password == "admin@123") {
+        if("admin".equals(username) && "admin@123".equals(password)) {
                 return true;
-            } else {
-                Toast.makeText(this, "Incorrect Password", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(this, "Incorrect Username", Toast.LENGTH_SHORT).show();
         }
+        Toast.makeText(this, "Incorrect Username", Toast.LENGTH_SHORT).show();
         return false;
     }
 }
