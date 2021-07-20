@@ -14,6 +14,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="80dp"
+        android:alpha="0.8"
         android:background="@drawable/btn_optionspage"
         android:onClick="buAddStudebtActivity"
         android:text="ADD STUDENT"
@@ -25,10 +26,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
+        android:id="@+id/buAddMarks"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="50dp"
+        android:alpha="0.8"
         android:background="@drawable/btn_optionspage"
         android:text="ADD MARKS"
         android:textColor="#FFFFFF"
@@ -39,10 +41,11 @@
         app:layout_constraintTop_toBottomOf="@+id/buAddStudebt" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
+        android:id="@+id/buViewDetails"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="48dp"
+        android:alpha="0.8"
         android:background="@drawable/btn_optionspage"
         android:text="VIEW DETAILS"
         android:textColor="#FFFFFF"
@@ -51,6 +54,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/buAddMarks" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

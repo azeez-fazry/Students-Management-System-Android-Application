@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         if("admin".equals(username) && "admin@123".equals(password)) {
                 return true;
         }
-        Toast.makeText(this, "Incorrect Username", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
         return false;
     }
 }
