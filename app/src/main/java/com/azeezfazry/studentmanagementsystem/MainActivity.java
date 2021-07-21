@@ -1,5 +1,11 @@
 package com.azeezfazry.studentmanagementsystem;
 
+/**
+ * Created by Azeez Fazry on 2021-07-21 10:02 PM
+ *
+ * git: azeez-fazry
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, OptionsActivity.class);
             startActivity(intent);
         }
-
     }
 
     /**
