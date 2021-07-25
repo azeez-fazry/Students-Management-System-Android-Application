@@ -1,10 +1,5 @@
 package com.azeezfazry.studentmanagementsystem;
 
-/**
- * Created by Azeez Fazry on 2021-07-21 10:02 PM
- *
- * git: azeez-fazry
- */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.sqlite.SQLiteOpenHelper;
@@ -24,6 +19,8 @@ public class AddStudent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
+        collegeDatabase = new CollegeDatabase(this);
+
         fname = findViewById(R.id.etFirstName);
         lname = findViewById(R.id.etLastName);
         usn = findViewById(R.id.etUSN);
@@ -36,9 +33,9 @@ public class AddStudent extends AppCompatActivity {
         boolean isInserted = collegeDatabase.insertData(fname.getText().toString(), lname.getText().toString(), usn.getText().toString(), phone.getText().toString(), department.getText().toString());
 
         // Show toast when data inserted successfully
-        if(isInserted){
+        if(isInserted) {
             Toast.makeText(AddStudent.this, "Data Inserted", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             Toast.makeText(AddStudent.this, "Data Not Inserted", Toast.LENGTH_SHORT).show();
         }
     }

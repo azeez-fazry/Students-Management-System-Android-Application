@@ -14,8 +14,9 @@ import androidx.annotation.Nullable;
  */
 public class CollegeDatabase extends SQLiteOpenHelper {
 
+//    Forstudent table
     public static final String DATABASE_NAME = "college.db";
-    public static final String TABLE_NAME = "student_table";
+    public static final String MARKS_TABLE = "marks_table";
     public static final String TABLE_COL_1 = "id";
     public static final String TABLE_COL_2 = "first_name";
     public static final String TABLE_COL_3 = "last_name";
@@ -23,20 +24,35 @@ public class CollegeDatabase extends SQLiteOpenHelper {
     public static final String TABLE_COL_5 = "phone";
     public static final String TABLE_COL_6 = "department";
 
-    public CollegeDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+//    For marks table
+    public static final String STUDENT_TABLE = "student_table";
+    public static final String USN = "usn";
+    public static final String SGPA_1 = "sgpa_1";
+    public static final String SGPA_2 = "sgpa_2";
+    public static final String SGPA_3 = "sgpa_3";
+    public static final String SGPA_4 = "sgpa_4";
+    public static final String SGPA_5 = "sgpa_5";
+    public static final String SGPA_6 = "sgpa_6";
+    public static final String SGPA_7 = "sgpa_7";
+    public static final String SGPA_8 = "sgpa_8";
+
+
+    public CollegeDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USN TEXT, PHONE TEXT, DEPARTMENT TEXT)");
+        db.execSQL("CREATE TABLE " + STUDENT_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, FIRST_NAME TEXT, LAST_NAME TEXT, USN TEXT, PHONE TEXT, DEPARTMENT TEXT)");
+        db.execSQL("CREATE " + MARKS_TABLE + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, USN TEXT, SGPA_1 TEXT, SGPA_2 TEXT, SGPA_3 TEXT, SGPA_4 TEXT, SGPA_5 TEXT, SGPA_6 TEXT, SGPA_7 TEXT, SGPA_8 TEXT, FOREIGN KEY (USN) REFERENCES " + STUDENT_TABLE +"(USN))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE " + TABLE_NAME);
+        db.execSQL("DROP TABLE " + STUDENT_TABLE);
         onCreate(db);
     }
+
     public boolean insertData(String fname, String lname, String usn, String phone, String department){
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -45,10 +61,10 @@ public class CollegeDatabase extends SQLiteOpenHelper {
         contentValues.put(TABLE_COL_3, lname);
         contentValues.put(TABLE_COL_4, usn);
         contentValues.put(TABLE_COL_5, phone);
-        contentValues.put(TABLE_COL_5, department);
+        contentValues.put(TABLE_COL_6, department);
 
         // Insert contents into database
-        long success = db.insert(TABLE_NAME, null, contentValues);
+        long success = db.insert(STUDENT_TABLE, null, contentValues);
 
         if(success == -1){
             // when query not inserted into database
