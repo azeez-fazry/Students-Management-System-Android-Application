@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buLoginAction(View view) {
-        EditText editTextUsername = findViewById(R.id.etUsername);
+        EditText editTextUsername = findViewById(R.id.etUSNSearch);
         EditText editTextPassword = findViewById(R.id.etPassword);
         String username = editTextUsername.getText().toString();
         String password = editTextPassword.getText().toString();

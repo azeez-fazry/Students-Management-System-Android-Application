@@ -18,4 +18,13 @@ public class OptionsActivity extends AppCompatActivity {
         Intent intent = new Intent(OptionsActivity.this, AddStudent.class);
         startActivity(intent);
     }
+
+    public void buViewDetailsActivity(View view) {
+        Intent intent = new Intent(OptionsActivity.this, ViewDetailsActivity.class);
+        startActivity(intent);
+    }
+
+    public void buAddMarksActivity(View view) {
+
+    }
 }
