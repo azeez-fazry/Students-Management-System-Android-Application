@@ -25,6 +25,7 @@ public class OptionsActivity extends AppCompatActivity {
     }
 
     public void buAddMarksActivity(View view) {
-
+        Intent intent = new Intent(OptionsActivity.this, AddMarksActivity.class);
+        startActivity(intent);
     }
 }

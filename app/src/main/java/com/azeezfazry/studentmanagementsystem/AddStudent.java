@@ -2,12 +2,9 @@ package com.azeezfazry.studentmanagementsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddStudent extends AppCompatActivity {
@@ -29,11 +26,13 @@ public class AddStudent extends AppCompatActivity {
     }
 
     public void buSubmitAction(View view) {
-        // Insert data into database
         boolean isInserted = collegeDatabase.insertData(fname.getText().toString(), lname.getText().toString(), usn.getText().toString(), phone.getText().toString(), department.getText().toString());
-
-        // Show toast when data inserted successfully
         if(isInserted) {
+            fname.setText("");
+            lname.setText("");
+            usn.setText("");
+            phone.setText("");
+            department.setText("");
             Toast.makeText(AddStudent.this, "Data Inserted", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(AddStudent.this, "Data Not Inserted", Toast.LENGTH_SHORT).show();

@@ -14,6 +14,7 @@ public class SearchResultsActivity extends AppCompatActivity {
     CollegeDatabase collegeDatabase;
     TextView textViewFullName;
     TextView textViewEmail;
+    TextView phoneNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class SearchResultsActivity extends AppCompatActivity {
         textViewFullName = findViewById(R.id.tvFullName);
         textViewEmail = findViewById(R.id.tvEmail);
         usn = getIntent().getStringExtra("usn");
+        phoneNo = findViewById(R.id.etPhone);
         databaseAccess();
     }
 
@@ -40,8 +42,9 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         while (cursor.moveToNext()){
             try {
-                textViewFullName.setText(cursor.getString(0).toString().toUpperCase() + " " + cursor.getString(1).toString().toUpperCase());
-                textViewEmail.setText(cursor.getString(2).toString().toUpperCase());
+                textViewFullName.setText(cursor.getString(0).toUpperCase() + " " + cursor.getString(1).toUpperCase());
+                textViewEmail.setText(cursor.getString(2).toUpperCase());
+                phoneNo.setText("+91" + cursor.getString(3));
             } catch (Exception ex) {
                 Toast.makeText(SearchResultsActivity.this, "Error!", Toast.LENGTH_SHORT).show();
             }
@@ -57,30 +60,29 @@ public class SearchResultsActivity extends AppCompatActivity {
             return;
         }
         StringBuffer stringBuffer = new StringBuffer();
+
         while (cursor.moveToNext()){
             try {
-                stringBuffer.append("1st Sem: " + cursor.getString(1) + "\n");
-                stringBuffer.append("2nd Sem: " + cursor.getString(2) + "\n");
-                stringBuffer.append("3rd Sem: " + cursor.getString(3) + "\n");
-                stringBuffer.append("4th Sem: " + cursor.getString(4) + "\n");
-                stringBuffer.append("5th Sem: " + cursor.getString(5) + "\n");
-                stringBuffer.append("6th Sem: " + cursor.getString(6) + "\n");
-                stringBuffer.append("7th Sem: " + cursor.getString(7) + "\n");
-                stringBuffer.append("8th Sem: " + cursor.getString(8) + "\n");
-
-                showMessage("Data",stringBuffer.toString());
-
+                stringBuffer.append("2nd Sem:   " + cursor.getString(2) + "\n");
+                stringBuffer.append("3rd Sem:   " + cursor.getString(3) + "\n");
+                stringBuffer.append("4th Sem:   " + cursor.getString(4) + "\n");
+                stringBuffer.append("5th Sem:   " + cursor.getString(5) + "\n");
+                stringBuffer.append("6th Sem:   " + cursor.getString(6) + "\n");
+                stringBuffer.append("7th Sem:   " + cursor.getString(7) + "\n");
+                stringBuffer.append("7th Sem:   " + cursor.getString(8) + "\n");
+                stringBuffer.append("8th Sem:   " + cursor.getString(9) + "\n\n\n");
             } catch (Exception ex) {
                 Toast.makeText(SearchResultsActivity.this, "Error!", Toast.LENGTH_SHORT).show();
             }
+            showMessage("Results",stringBuffer.toString());
         }
     }
 
-    private void showMessage(String title, String Message) {
+    private void showMessage(String title, String stringBuffer) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
+        builder.setTitle(title + " of " + usn.toUpperCase());
+        builder.setMessage(stringBuffer);
         builder.show();
     }
 }
